@@ -8,12 +8,14 @@ describe "twitch", ->
     beforeEach ->
         @robot =
             respond: sinon.spy()
-            hear: sinon.spy()
 
         require("../src/twitch")(@robot)
 
     it "registers a respond listener", ->
-        expect(@robot.respond).to.have.been.calledWith(/hello/)
-
-    it "registers a hear listener", ->
-        expect(@robot.hear).to.have.been.calledWith(/orly/)
+        expect(@robot.respond).to.have.been.calledWith(/ttv follows/i)
+        expect(@robot.respond).to.have.been.calledWith(/ttv link (.+)/i)
+        expect(@robot.respond).to.have.been.calledWith(/ttv featured/i)
+        expect(@robot.respond).to.have.been.calledWith(/ttv game (.+)/i)
+        expect(@robot.respond).to.have.been.calledWith(/ttv search (.+)/i)
+        expect(@robot.respond).to.have.been.calledWith(/ttv stream (.+)/i)
+        expect(@robot.respond).to.have.been.calledWith(/ttv top/i)
