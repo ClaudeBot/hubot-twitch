@@ -1,0 +1,42 @@
+{
+  "name": "hubot-twitch",
+  "description": "A Hubot script for interacting with Twitch.tv API",
+  "version": "1.0.0",
+
+  "author": "Ian Lai <ian@fyianlai.com>",
+  "contributors": "Karl Birch (http://www.mbwkarl.com/)",
+  "license": "MIT",
+
+  "keywords": [
+    "hubot",
+    "hubot-scripts",
+    "twitch"
+    "livestream"
+  ],
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ClaudeBot/hubot-twitch.git"
+  },
+
+  "bugs": {
+    "url": "https://github.com/ClaudeBot/hubot-twitch/issues"
+  },
+
+  "dependencies": {
+    "coffee-script": "~1.6"
+  },
+
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "sinon-chai": "*",
+    "sinon": "*"
+  },
+
+  "main": "index.coffee",
+
+  "scripts": {
+    "test": "script/test"
+  }
+}
