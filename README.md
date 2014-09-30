@@ -7,15 +7,15 @@ A Hubot script for interacting with Twitch.tv API.
 
 1. Install the __hubot-twitch__ module as a Hubot dependency by adding it to your `package.json` file:
 
-```
-npm install --save hubot-twitch
-```
+    ```
+    npm install --save hubot-twitch
+    ```
 
 2. Enable the script by adding the __hubot-twitch__ entry to your `external-scripts.json` file:
 
-```
-["hubot-twitch"]
-```
+    ```json
+    ["hubot-twitch"]
+    ```
 
 3. Run `npm install`
 
