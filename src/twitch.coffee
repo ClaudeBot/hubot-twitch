@@ -1,9 +1,6 @@
 # Description:
 #   Twitch Public API
 #
-# Dependencies:
-#   None
-#
 # Configuration:
 #   TWITCH_API_KEY
 #   HUBOT_TWITCH_KEY
