@@ -66,9 +66,11 @@ module.exports = (robot) ->
 
     robot.respond /ttv featured/i, (msg) ->
         GetTwitchResult msg, '/streams/featured', null, (object) ->
+            response = ""
             for feature in object.featured
                 channel = feature.stream.channel
-                msg.send "#{feature.stream.game}: #{channel.display_name} (#{channel.status}) - #{channel.url} [Viewers: #{feature.stream.viewers}]"
+                response += "#{feature.stream.game}: #{channel.display_name} (#{channel.status}) - #{channel.url} [Viewers: #{feature.stream.viewers}]\n"
+            msg.send response
 
     robot.respond /ttv game (.+)/i, (msg) ->
         category = msg.match[1]
@@ -77,9 +79,11 @@ module.exports = (robot) ->
                 msg.reply "No live streams were found in \"#{category}\". Try a different category or try again later."
                 return
 
+            response = ""
             for stream in object.streams
                 channel = stream.channel
-                msg.send "#{channel.display_name} (\"#{channel.status}\"): #{channel.url} [Viewers: #{stream.viewers}]"
+                response += "#{channel.display_name} (\"#{channel.status}\"): #{channel.url} [Viewers: #{stream.viewers}]\n"
+            msg.send response
 
             if object._total > TWITCH_MAX_RESULTS
                 msg.reply "There are #{object._total - TWITCH_MAX_RESULTS} other \"#{category}\" live streams."
@@ -91,9 +95,11 @@ module.exports = (robot) ->
                 msg.reply "No live streams were found using search query: \"#{query}\". Try a different query or try again later."
                 return
 
+            response = ""
             for stream in object.streams
                 channel = stream.channel
-                msg.send "#{channel.display_name} (\"#{channel.status}\"): #{channel.url} [Viewers: #{stream.viewers}]"
+                response += "#{channel.display_name} (\"#{channel.status}\"): #{channel.url} [Viewers: #{stream.viewers}]\n"
+            msg.send response
 
             if object._total > TWITCH_MAX_RESULTS
                 msg.reply "There are #{object._total - TWITCH_MAX_RESULTS} other live streams matching your search query: \"#{query}\"."
@@ -109,17 +115,20 @@ module.exports = (robot) ->
                 return
 
             channel = object.stream.channel
-            msg.send "#{channel.display_name} is streaming #{channel.game} @ #{channel.url}"
-            msg.send "Stream status: \"#{channel.status}\""
-            msg.send "Viewers: #{object.stream.viewers}"
+            response = "#{channel.display_name} is streaming #{channel.game} @ #{channel.url}"
+            response += "Stream status: \"#{channel.status}\""
+            response += "Viewers: #{object.stream.viewers}"
+            msg.send response
 
     robot.respond /ttv top/i, (msg) ->
         createGameURL = (game) ->
             "https://www.twitch.tv/directory/game/#{encodeURIComponent(game)}"
 
         GetTwitchResult msg, "/games/top", null, (object) ->
+            response = ""
             for gameObj, i in object.top
-                msg.send "#{i + 1}. #{gameObj.game.name} | Viewers: #{gameObj.viewers} | Channels: #{gameObj.channels} | #{createGameURL(gameObj.game.name)}"
+                response += "#{i + 1}. #{gameObj.game.name} | Viewers: #{gameObj.viewers} | Channels: #{gameObj.channels} | #{createGameURL(gameObj.game.name)}\n"
+            msg.send response
 
 GetTwitchResult = (msg, api, params = {}, handler) ->
     params.client_id = TWITCH_API_KEY
