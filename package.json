@@ -1,7 +1,7 @@
 {
   "name": "hubot-twitch",
   "description": "A Hubot script for interacting with Twitch.tv API.",
-  "version": "1.0.0",
+  "version": "1.0.1",
 
   "author": "Ian Lai <ian@fyianlai.com>",
   "contributors": "Karl Birch (http://www.mbwkarl.com/)",
