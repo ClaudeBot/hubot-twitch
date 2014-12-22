@@ -31,10 +31,10 @@ A Hubot script for interacting with Twitch.tv API.
 
 Command | Description
 --- | ---
-hubot ttv __follows__ | Returns the 10 most recent live streams belonging to your followed channels (list populated from your linked Twitch user)
-hubot ttv __link__ `user` | Link Twitch `user` to you
-hubot ttv __featured__ | Returns the first 5 featured live streams
-hubot ttv __game__ `category` | Returns the first 5 live streams in a game `category` (case-sensitive)
-hubot ttv __search__ `query` | Returns the first 5 live streams matching the search `query`
-hubot ttv __stream__ `name` | Returns information about stream `name`
-hubot ttv __top__ | Returns the top 5 games sorted by the number of current viewers on Twitch, most popular first
+hubot ttv follows | Returns the 10 most recent live streams belonging to your followed channels (list populated from your linked Twitch user)
+hubot ttv link `user` | Link Twitch `user` to you
+hubot ttv featured | Returns the first 5 featured live streams
+hubot ttv game `category` | Returns the first 5 live streams in a game `category` (case-sensitive)
+hubot ttv search `query` | Returns the first 5 live streams matching the search `query`
+hubot ttv stream `name` | Returns information about stream `name`
+hubot ttv top | Returns the top 5 games sorted by the number of current viewers on Twitch, most popular first
