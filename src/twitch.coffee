@@ -47,7 +47,10 @@ module.exports = (robot) ->
                             channel = object.stream.channel
                             msg.send "#{channel.display_name} is streaming #{channel.game} @ #{channel.url}"
                         if processing is 0
-                            total = if total is 0 then "None" else total + " or more"
+                            if total is 0
+                                total = "None"
+                            else if total >= 10
+                                total += " or more"
                             return msg.reply "#{total} of your followed channels are currently streaming."
         else
             msg.reply "You have not linked your Twitch account yet."
