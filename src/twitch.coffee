@@ -3,7 +3,8 @@
 #
 # Configuration:
 #   TWITCH_API_KEY
-#   HUBOT_TWITCH_KEY
+#   TWITCH_MAX_RESULTS
+#   TWITCH_STORAGE_KEY
 #
 # Commands:
 #   hubot ttv follows - Returns the 10 most recent live streams belonging to your followed channels (list populated from your linked Twitch user)
