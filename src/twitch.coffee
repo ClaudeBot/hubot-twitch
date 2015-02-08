@@ -115,8 +115,8 @@ module.exports = (robot) ->
                 return
 
             channel = object.stream.channel
-            response = "#{channel.display_name} is streaming #{channel.game} @ #{channel.url}"
-            response += "Stream status: \"#{channel.status}\""
+            response = "#{channel.display_name} is streaming #{channel.game} @ #{channel.url}\n"
+            response += "Stream status: \"#{channel.status}\"\n"
             response += "Viewers: #{object.stream.viewers}"
             msg.send response
 
