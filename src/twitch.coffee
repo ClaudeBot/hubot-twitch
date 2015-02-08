@@ -22,8 +22,8 @@
 # Config
 #
 TWITCH_API_KEY = process.env.TWITCH_API_KEY
-TWITCH_MAX_RESULTS = 5
-TWITCH_STORAGE_KEY = process.env.HUBOT_TWITCH_KEY or "_twitch"
+TWITCH_MAX_RESULTS = process.env.TWITCH_MAX_RESULTS or 5
+TWITCH_STORAGE_KEY = process.env.TWITCH_STORAGE_KEY or "_twitch"
 
 module.exports = (robot) ->
     GetTTVData = ->
