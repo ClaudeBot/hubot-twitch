@@ -35,7 +35,7 @@ Config | Description
 
 Command | Description
 --- | ---
-hubot ttv follows | Returns the 10 most recent live streams belonging to your followed channels (list populated from your linked Twitch user)
+hubot ttv follows | Returns the 10 most recent live streams belonging to your followed channels (list populated from your linked Twitch user, see command below)
 hubot ttv link `user` | Link Twitch `user` to you
 hubot ttv featured | Returns the first `TWITCH_MAX_RESULTS` (or 5) featured live streams
 hubot ttv game `category` | Returns the first `TWITCH_MAX_RESULTS` (or 5) live streams in a game `category` (case-sensitive)
