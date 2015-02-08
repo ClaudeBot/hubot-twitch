@@ -45,7 +45,7 @@ module.exports = (robot) ->
                         if object.status isnt 404 and object.stream
                             ++total
                             channel = object.stream.channel
-                            msg.send "#{channel.display_name} is streaming #{channel.game} @ #{channel.url}"
+                            msg.send "#{channel.display_name} is streaming \"#{channel.status}\" @ #{channel.url}"
                         if processing is 0
                             if total is 0
                                 total = "None"
@@ -73,7 +73,7 @@ module.exports = (robot) ->
             response = ""
             for feature in object.featured
                 channel = feature.stream.channel
-                response += "#{feature.stream.game}: #{channel.display_name} (#{channel.status}) - #{channel.url} [Viewers: #{feature.stream.viewers}]\n"
+                response += "#{feature.stream.game}: #{channel.display_name} (\"#{channel.status}\") - #{channel.url} [Viewers: #{feature.stream.viewers}]\n"
             msg.send response
 
     robot.respond /ttv game (.+)/i, (msg) ->
@@ -120,7 +120,7 @@ module.exports = (robot) ->
 
             channel = object.stream.channel
             response = "#{channel.display_name} is streaming #{channel.game} @ #{channel.url}\n"
-            response += "Stream status: \"#{channel.status}\"\n"
+            response += "Stream status: #{channel.status}\n"
             response += "Viewers: #{object.stream.viewers}"
             msg.send response
 
@@ -140,8 +140,9 @@ GetTwitchResult = (msg, api, params = {}, handler) ->
     msg.http("https://api.twitch.tv/kraken#{api}")
         .query(params)
         .get() (err, res, body) ->
-            if err
+            if err or res.statusCode isnt 200
+                err = "503 Service Unavailable" if res.statusCode is 503
                 msg.reply "An error occurred while attempting to process your request."
-                return robot.logger.error err
+                return msg.robot.logger.error err
 
             handler JSON.parse(body)
