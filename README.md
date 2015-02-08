@@ -22,13 +22,13 @@ A Hubot script for interacting with Twitch.tv API.
 3. Run `npm install`
 
 
-## Config
+## Configuration
 
-Config | Description
---- | ---
-`TWITCH_API_KEY` | _(Optional)_ To avoid any restrictions when using Twitch API, please [register your application](http://www.twitch.tv/settings/connections) and set your application [client ID](https://github.com/justintv/Twitch-API/blob/master/authentication.md#developer-setup) using this config
-`TWITCH_MAX_RESULTS` | The maximum number of result(s) to return
-`TWITCH_STORAGE_KEY` | The unique key used for persistence (storing/retrieving users' Twitch-related data from memory)
+Variable | Default | Description
+--- | --- | ---
+`TWITCH_API_KEY` | N/A | _(Optional)_ To avoid any restrictions when using Twitch API, please [register your application](http://www.twitch.tv/settings/connections) and set your application [client ID](https://github.com/justintv/Twitch-API/blob/master/authentication.md#developer-setup) using this config
+`TWITCH_MAX_RESULTS` | 5 | The maximum number of result(s) to return
+`TWITCH_STORAGE_KEY` | _twitch | The unique key used for persistence (storing/retrieving users' Twitch-related data from memory)
 
 
 ## Commands
