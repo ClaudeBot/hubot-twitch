@@ -5,7 +5,7 @@ A Hubot script for interacting with Twitch.tv API.
 
 ## Installation via NPM
 
-1. Install the __hubot-twitch__ module as a Hubot dependency by adding it to your `package.json` file:
+1. Install the __hubot-twitch__ module as a Hubot dependency by running:
 
     ```
     npm install --save hubot-twitch
@@ -14,7 +14,9 @@ A Hubot script for interacting with Twitch.tv API.
 2. Enable the script by adding the __hubot-twitch__ entry to your `external-scripts.json` file:
 
     ```json
-    ["hubot-twitch"]
+    [
+        "hubot-twitch"
+    ]
     ```
 
 3. Run `npm install`
@@ -22,9 +24,11 @@ A Hubot script for interacting with Twitch.tv API.
 
 ## Config
 
-- `TWITCH_API_KEY`
-- `HUBOT_TWITCH_KEY`
-- `HUBOT_TWITCH_MAX_RESULTS` _(TBA)_
+Config | Description
+--- | ---
+`TWITCH_API_KEY` | _(Optional)_ To avoid any restrictions when using Twitch API, please [register your application](http://www.twitch.tv/settings/connections) and set your application [client ID](https://github.com/justintv/Twitch-API/blob/master/authentication.md#developer-setup) using this config
+`TWITCH_MAX_RESULTS` | The maximum number of result(s) to return
+`TWITCH_STORAGE_KEY` | The unique key used for persistence (storing/retrieving users' Twitch-related data from memory)
 
 
 ## Commands
@@ -33,8 +37,8 @@ Command | Description
 --- | ---
 hubot ttv follows | Returns the 10 most recent live streams belonging to your followed channels (list populated from your linked Twitch user)
 hubot ttv link `user` | Link Twitch `user` to you
-hubot ttv featured | Returns the first 5 featured live streams
-hubot ttv game `category` | Returns the first 5 live streams in a game `category` (case-sensitive)
-hubot ttv search `query` | Returns the first 5 live streams matching the search `query`
+hubot ttv featured | Returns the first `TWITCH_MAX_RESULTS` (or 5) featured live streams
+hubot ttv game `category` | Returns the first `TWITCH_MAX_RESULTS` (or 5) live streams in a game `category` (case-sensitive)
+hubot ttv search `query` | Returns the first `TWITCH_MAX_RESULTS` (or 5) live streams matching the search `query`
 hubot ttv stream `name` | Returns information about stream `name`
-hubot ttv top | Returns the top 5 games sorted by the number of current viewers on Twitch, most popular first
+hubot ttv top | Returns the top `TWITCH_MAX_RESULTS` (or 5) games sorted by the number of current viewers on Twitch, most popular first
