@@ -9,11 +9,11 @@
 # Commands:
 #   hubot ttv follows - Returns the 10 most recent live streams belonging to your followed channels (list populated from your linked Twitch user)
 #   hubot ttv link <user> - Link Twitch <user> to you
-#   hubot ttv featured - Returns the first 5 featured live streams
-#   hubot ttv game <category> - Returns the first 5 live streams in a game <category> (case-sensitive)
-#   hubot ttv search <query> - Returns the first 5 live streams matching the search <query>
+#   hubot ttv featured - Returns the first TWITCH_MAX_RESULTS (or 5) featured live streams
+#   hubot ttv game <category> - Returns the first TWITCH_MAX_RESULTS (or 5) live streams in a game <category> (case-sensitive)
+#   hubot ttv search <query> - Returns the first TWITCH_MAX_RESULTS (or 5) live streams matching the search <query>
 #   hubot ttv stream <name> - Returns information about stream <name>
-#   hubot ttv top - Returns the top 5 games sorted by the number of current viewers on Twitch, most popular first
+#   hubot ttv top - Returns the top TWITCH_MAX_RESULTS (or 5) games sorted by the number of current viewers on Twitch, most popular first
 #
 # Author:
 #   MrSaints
