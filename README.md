@@ -1,5 +1,7 @@
 # Hubot: Twitch.tv
 
+[![Build Status](https://travis-ci.org/ClaudeBot/hubot-twitch.svg)](https://travis-ci.org/ClaudeBot/hubot-twitch)
+
 A Hubot script for interacting with Twitch.tv API.
 
 
