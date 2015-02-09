@@ -19,7 +19,7 @@ A Hubot script for interacting with Twitch.tv API.
     ]
     ```
 
-3. Run `npm install`
+3. Run your bot and see below for available config / commands
 
 
 ## Configuration
