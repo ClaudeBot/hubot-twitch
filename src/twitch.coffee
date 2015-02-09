@@ -27,6 +27,9 @@ TWITCH_MAX_RESULTS = process.env.TWITCH_MAX_RESULTS or 5
 TWITCH_STORAGE_KEY = process.env.TWITCH_STORAGE_KEY or "_twitch"
 
 module.exports = (robot) ->
+    if not TWITCH_API_KEY?
+        robot.logger.warning "Missing TWITCH_API_KEY in environment. Setting an API key is highly recommended."
+
     GetTTVData = ->
         robot.brain.data[TWITCH_STORAGE_KEY] or= {}
 
