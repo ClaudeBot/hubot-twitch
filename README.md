@@ -4,6 +4,8 @@
 
 A Hubot script for interacting with Twitch.tv API.
 
+See [`src/twitch.coffee`](src/twitch.coffee) for full documentation.
+
 
 ## Installation via NPM
 
@@ -13,7 +15,7 @@ A Hubot script for interacting with Twitch.tv API.
     npm install --save hubot-twitch
     ```
 
-2. Enable the script by adding the __hubot-twitch__ entry to your `external-scripts.json` file:
+2. Enable the module by adding the __hubot-twitch__ entry to your `external-scripts.json` file:
 
     ```json
     [
