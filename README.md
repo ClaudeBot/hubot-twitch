@@ -1,6 +1,7 @@
-# Hubot: Twitch.tv
+# hubot-twitch
 
 [![Build Status](https://travis-ci.org/ClaudeBot/hubot-twitch.svg)](https://travis-ci.org/ClaudeBot/hubot-twitch)
+[![devDependency Status](https://david-dm.org/ClaudeBot/hubot-twitch/dev-status.svg)](https://david-dm.org/ClaudeBot/hubot-twitch#info=devDependencies)
 
 A Hubot script for interacting with Twitch.tv API.
 
@@ -46,3 +47,13 @@ hubot ttv game `category` | Returns the first `TWITCH_MAX_RESULTS` (or 5) live s
 hubot ttv search `query` | Returns the first `TWITCH_MAX_RESULTS` (or 5) live streams matching the search `query`
 hubot ttv stream `name` | Returns information about stream `name`
 hubot ttv top | Returns the top `TWITCH_MAX_RESULTS` (or 5) games sorted by the number of current viewers on Twitch, most popular first
+
+
+## Sample Interaction
+
+```
+user1>> hubot ttv follows
+hubot>> Dendi is streaming "<:::::[]=¤༼ຈل͜ຈ༽ﾉ FOR THE WATCH" @ http://www.twitch.tv/dendi
+hubot>> Sing_sing is streaming "newbie dota player" @ http://www.twitch.tv/sing_sing
+hubot>> user1: 2 of your followed channels are currently streaming.
+```
