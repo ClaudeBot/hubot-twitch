@@ -3,7 +3,7 @@
   "description": "A Hubot script for interacting with Twitch.tv API.",
   "version": "1.1.2",
   "author": "Ian Lai <ian@fyianlai.com>",
-  "contributors": "Karl Birch (http://www.mbwkarl.com/)",
+  "contributors": "Karl Birch (https://github.com/mbwk)",
   "license": "MIT",
   "keywords": [
     "hubot",
