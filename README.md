@@ -38,15 +38,15 @@ Variable | Default | Description
 
 ## Commands
 
-Command | Description
---- | ---
-hubot ttv follows | Returns the 10 most recent live streams belonging to your followed channels (list populated from your linked Twitch user, see command below)
-hubot ttv link `user` | Link Twitch `user` to you
-hubot ttv featured | Returns the first `TWITCH_MAX_RESULTS` (or 5) featured live streams
-hubot ttv game `category` | Returns the first `TWITCH_MAX_RESULTS` (or 5) live streams in a game `category` (case-sensitive)
-hubot ttv search `query` | Returns the first `TWITCH_MAX_RESULTS` (or 5) live streams matching the search `query`
-hubot ttv stream `name` | Returns information about stream `name`
-hubot ttv top | Returns the top `TWITCH_MAX_RESULTS` (or 5) games sorted by the number of current viewers on Twitch, most popular first
+Command | Listener ID | Description
+--- | --- | ---
+hubot ttv follows | `twitch.follows` | Returns the 10 most recent live streams belonging to your followed channels (list populated from your linked Twitch user, see command below)
+hubot ttv link `user` | `twitch.link` | Link Twitch `user` to you
+hubot ttv featured | `twitch.featured` | Returns the first `TWITCH_MAX_RESULTS` (or 5) featured live streams
+hubot ttv game `category` | `twitch.game` | Returns the first `TWITCH_MAX_RESULTS` (or 5) live streams in a game `category` (case-sensitive)
+hubot ttv search `query` | `twitch.search` | Returns the first `TWITCH_MAX_RESULTS` (or 5) live streams matching the search `query`
+hubot ttv stream `name` | `twitch.stream` | Returns information about stream `name`
+hubot ttv top | `twitch.top` | Returns the top `TWITCH_MAX_RESULTS` (or 5) games sorted by the number of current viewers on Twitch, most popular first
 
 
 ## Sample Interaction
