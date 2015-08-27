@@ -33,7 +33,7 @@ module.exports = (robot) ->
     GetTTVData = ->
         robot.brain.data[TWITCH_STORAGE_KEY] or= {}
 
-    robot.respond /ttv follows/i, (res) ->
+    robot.respond /ttv follows/i, id: "twitch.follows", (res) ->
         user = res.message.user.name.toLowerCase()
         if twitchUser = GetTTVData()[user]
             GetTwitchResult res, "/users/#{twitchUser}/follows/channels", { limit: 10, sortby: "last_broadcast" }, (followsObj) ->
@@ -58,7 +58,7 @@ module.exports = (robot) ->
         else
             res.reply "You have not linked your Twitch account yet."
 
-    robot.respond /ttv link (.+)/i, (res) ->
+    robot.respond /ttv link (.+)/i, id: "twitch.link", (res) ->
         user = res.message.user.name.toLowerCase()
         twitchUser = res.match[1]
 
@@ -71,7 +71,7 @@ module.exports = (robot) ->
             robot.brain.save()
             res.reply "Twitch user \"#{twitchUser}\" is now linked to you."
 
-    robot.respond /ttv featured/i, (res) ->
+    robot.respond /ttv featured/i, id: "twitch.featured", (res) ->
         GetTwitchResult res, '/streams/featured', null, (object) ->
             response = ""
             for feature in object.featured
@@ -79,7 +79,7 @@ module.exports = (robot) ->
                 response += "#{feature.stream.game}: #{channel.display_name} (\"#{channel.status}\") - #{channel.url} [Viewers: #{feature.stream.viewers}]\n"
             res.send response
 
-    robot.respond /ttv game (.+)/i, (res) ->
+    robot.respond /ttv game (.+)/i, id: "twitch.game", (res) ->
         category = res.match[1]
         GetTwitchResult res, '/streams', { game: category }, (object) ->
             if object._total is 0
@@ -95,7 +95,7 @@ module.exports = (robot) ->
             if object._total > TWITCH_MAX_RESULTS
                 res.reply "There are #{object._total - TWITCH_MAX_RESULTS} other \"#{category}\" live streams."
 
-    robot.respond /ttv search (.+)/i, (res) ->
+    robot.respond /ttv search (.+)/i, id: "twitch.search", (res) ->
         query = res.match[1]
         GetTwitchResult res, "/search/streams", { q: query }, (object) ->
             if object._total is 0
@@ -111,7 +111,7 @@ module.exports = (robot) ->
             if object._total > TWITCH_MAX_RESULTS
                 res.reply "There are #{object._total - TWITCH_MAX_RESULTS} other live streams matching your search query: \"#{query}\"."
 
-    robot.respond /ttv stream (.+)/i, (res) ->
+    robot.respond /ttv stream (.+)/i, id: "twitch.stream", (res) ->
         GetTwitchResult res, "/streams/#{res.match[1]}", null, (object) ->
             if object.status is 404
                 res.reply "The stream you have entered (\"#{res.match[1]}\") does not exist."
@@ -127,7 +127,7 @@ module.exports = (robot) ->
             response += "Viewers: #{object.stream.viewers}"
             res.send response
 
-    robot.respond /ttv top/i, (res) ->
+    robot.respond /ttv top/i, id: "twitch.top", (res) ->
         createGameURL = (game) ->
             "https://www.twitch.tv/directory/game/#{encodeURIComponent(game)}"
 
