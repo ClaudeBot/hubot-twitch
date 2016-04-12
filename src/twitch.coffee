@@ -34,7 +34,7 @@ module.exports = (robot) ->
         robot.brain.data[TWITCH_STORAGE_KEY] or= {}
 
     robot.respond /ttv follows/i, id: "twitch.follows", (res) ->
-        user = res.message.user.name.toLowerCase()
+        user = res.message.user.id.toLowerCase()
         if twitchUser = GetTTVData()[user]
             GetTwitchResult res, "/users/#{twitchUser}/follows/channels", { limit: 10, sortby: "last_broadcast" }, (followsObj) ->
                 if followsObj._total is 0 or followsObj.status is 404
@@ -59,7 +59,7 @@ module.exports = (robot) ->
             res.reply "You have not linked your Twitch account yet."
 
     robot.respond /ttv link (.+)/i, id: "twitch.link", (res) ->
-        user = res.message.user.name.toLowerCase()
+        user = res.message.user.id.toLowerCase()
         twitchUser = res.match[1]
 
         GetTwitchResult res, "/users/#{twitchUser}", null, (object) ->
@@ -143,7 +143,7 @@ GetTwitchResult = (res, api, params = {}, handler) ->
     res.http("https://api.twitch.tv/kraken#{api}")
         .query(params)
         .get() (err, httpRes, body) ->
-            if err or httpRes.statusCode isnt 200
+            if err or (httpRes.statusCode isnt 200 and httpRes.statusCode isnt 404)
                 err = "503 Service Unavailable" if httpRes.statusCode is 503
                 res.reply "An error occurred while attempting to process your request."
                 return res.robot.logger.error "hubot-twitch: #{err}"
