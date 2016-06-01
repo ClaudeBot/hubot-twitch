@@ -28,7 +28,7 @@ TWITCH_STORAGE_KEY = process.env.TWITCH_STORAGE_KEY or "_twitch"
 
 module.exports = (robot) ->
     if not TWITCH_API_KEY?
-        robot.logger.warning "hubot-twitch: Missing TWITCH_API_KEY in environment. Setting an API key is highly recommended."
+        return robot.logger.error "hubot-twitch: Missing TWITCH_API_KEY in environment. Please set and try again."
 
     GetTTVData = ->
         robot.brain.data[TWITCH_STORAGE_KEY] or= {}
@@ -141,6 +141,7 @@ GetTwitchResult = (res, api, params = {}, handler) ->
     params.client_id = TWITCH_API_KEY
     params.limit or= TWITCH_MAX_RESULTS
     res.http("https://api.twitch.tv/kraken#{api}")
+        .header("Client-ID", TWITCH_API_KEY)
         .query(params)
         .get() (err, httpRes, body) ->
             if err or (httpRes.statusCode isnt 200 and httpRes.statusCode isnt 404)

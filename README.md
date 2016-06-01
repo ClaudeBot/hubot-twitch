@@ -3,9 +3,23 @@
 [![Build Status](https://travis-ci.org/ClaudeBot/hubot-twitch.svg)](https://travis-ci.org/ClaudeBot/hubot-twitch)
 [![devDependency Status](https://david-dm.org/ClaudeBot/hubot-twitch/dev-status.svg)](https://david-dm.org/ClaudeBot/hubot-twitch#info=devDependencies)
 
-A Hubot script for interacting with Twitch.tv API.
+A Hubot script for interacting with [Twitch.tv][twitch] API.
 
 See [`src/twitch.coffee`](src/twitch.coffee) for full documentation.
+
+
+---
+
+
+**Attention:** [Starting from the 8th of August 2016][kraken], including the `Client-ID` in the header of all API requests has become a requirement by [Twitch.tv][twitch]. It was previously an OPTIONAL configuration option. This is no longer the case.
+
+You can obtain the `Client-ID` from the [Connections](https://www.twitch.tv/settings/connections) page in your settings. You can then set this in your Hubot environment using:
+
+```bash
+export TWITCH_API_KEY="YOUR CLIENT ID HERE"
+```
+
+If you are already doing the above, you will have nothing to worry about.
 
 
 ## Installation via NPM
@@ -31,7 +45,7 @@ See [`src/twitch.coffee`](src/twitch.coffee) for full documentation.
 
 Variable | Default | Description
 --- | --- | ---
-`TWITCH_API_KEY` | N/A | _(Optional)_ To avoid any restrictions when using Twitch API, please [register your application](http://www.twitch.tv/settings/connections) and set your application [client ID](https://github.com/justintv/Twitch-API/blob/master/authentication.md#developer-setup) using this config
+`TWITCH_API_KEY` | N/A | _(Required)_ To avoid any restrictions when using Twitch API, please [register your application](http://www.twitch.tv/settings/connections) and set your application [client ID](https://github.com/justintv/Twitch-API/blob/master/authentication.md#developer-setup) using this config
 `TWITCH_MAX_RESULTS` | 5 | The maximum number of result(s) to return
 `TWITCH_STORAGE_KEY` | _twitch | The unique key used for persistence (storing/retrieving users' Twitch-related data from memory)
 
@@ -57,3 +71,7 @@ hubot>> Dendi is streaming "<:::::[]=¤༼ຈل͜ຈ༽ﾉ FOR THE WATCH" @ http
 hubot>> Sing_sing is streaming "newbie dota player" @ http://www.twitch.tv/sing_sing
 hubot>> user1: 2 of your followed channels are currently streaming.
 ```
+
+
+[twitch]: https://www.twitch.tv/
+[kraken]: https://blog.twitch.tv/client-id-required-for-kraken-api-calls-afbb8e95f843
