@@ -34,7 +34,7 @@ module.exports = (robot) ->
         robot.brain.data[TWITCH_STORAGE_KEY] or= {}
 
     robot.respond /ttv follows/i, id: "twitch.follows", (res) ->
-        user = res.message.user.id.toLowerCase()
+        user = res.message.user.id.toString().toLowerCase()
         if twitchUser = GetTTVData()[user]
             GetTwitchResult res, "/users/#{twitchUser}/follows/channels", { limit: 10, sortby: "last_broadcast" }, (followsObj) ->
                 if followsObj._total is 0 or followsObj.status is 404
@@ -59,7 +59,7 @@ module.exports = (robot) ->
             res.reply "You have not linked your Twitch account yet."
 
     robot.respond /ttv link (.+)/i, id: "twitch.link", (res) ->
-        user = res.message.user.id.toLowerCase()
+        user = res.message.user.id.toString().toLowerCase()
         twitchUser = res.match[1]
 
         GetTwitchResult res, "/users/#{twitchUser}", null, (object) ->
